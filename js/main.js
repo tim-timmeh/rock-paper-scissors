@@ -19,17 +19,22 @@ function game(){
   } else {
     console.log("Computer wins this time.");
   }
+  console.log("FN End: game");
 }
 
 function computerPlay(){
   switch(Math.ceil(Math.random() * 3)){
     case 1:
+      console.log("FN End: computerPlay rock");
       return "rock";
     case 2:
+      console.log("FN End: computerPlay paper");
       return "paper";
     case 3:
+      console.log("FN End: computerPlay scissors");
       return "scissors";
   }
+  console.log("FN End: computerPlay");
 }
 
 function playRound(player,computer){
@@ -60,14 +65,17 @@ function playRound(player,computer){
       break;
   }
   //return `You draw!`;
+  console.log("FN End: playRound");
   return 0
 }
 
 function youWin(a,b){
   //return `You win! ${a} beats ${b}`
+  console.log("FN End: youWin");
   return 1
 }
 function youLose(a,b){
   //return `You lose! ${a} beats ${b}`
+  console.log("FN End: youLose");
   return -1
 }
