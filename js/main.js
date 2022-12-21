@@ -5,7 +5,7 @@ let computerSelection = computerPlay();
 let playerSelection = "Rock";
 console.log(computerPlay());
 console.log(playerSelection);
-//console.log(playRound(playerSelection.toLowerCase(),computerSelection));
+console.log(playRound(playerSelection.toLowerCase(),computerSelection));
 
 function game(){
   let gameFull = 0;
