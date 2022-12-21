@@ -2,7 +2,7 @@
 
 
 let computerSelection = computerPlay();
-let playerSelection = "Rock";
+let playerSelection = "Paper";
 console.log(computerPlay());
 console.log(playerSelection);
 console.log("TEST");
