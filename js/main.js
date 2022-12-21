@@ -2,10 +2,9 @@
 
 
 let computerSelection = computerPlay();
-let playerSelection = "Paper";
+let playerSelection = "scissors";
 console.log(computerPlay());
 console.log(playerSelection);
-console.log("TEST");
 console.log(playRound(playerSelection.toLowerCase(),computerSelection));
 
 function game(){
