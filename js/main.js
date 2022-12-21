@@ -38,6 +38,7 @@ function computerPlay(){
 }
 
 function playRound(player,computer){
+  console.log('FN Start: playRound');
   switch(player){
     case "rock":
       if (computer == "scissors") {
