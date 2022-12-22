@@ -2,7 +2,7 @@
 
 
 let computerSelection = computerPlay();
-let playerSelection = "scissors";
+let playerSelection = "rock";
 console.log(computerPlay());
 console.log(playerSelection);
 console.log(playRound(playerSelection.toLowerCase(),computerSelection));
