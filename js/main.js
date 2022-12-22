@@ -1,82 +1,94 @@
 'use strict'
 
 
-let computerSelection = computerPlay();
-let playerSelection = "rock";
-console.log(computerPlay());
-console.log(playerSelection);
-console.log(playRound(playerSelection.toLowerCase(),computerSelection));
 
-function game(){
-  let gameFull = 0;
-  for (let i = 0; i < 4; i++){
-    let gameRound = playRound(playerSelection.toLowerCase(),computerPlay());
-    gameFull += gameRound;
-    console.log(gameRound);
+//let playerSelection = "rock";
+//console.log(computerPlay());
+//console.log(playerSelection);
+//console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+
+const YOU_WIN = 1;
+const YOU_LOSE = -1;
+const YOU_DRAW = 0;
+
+game()
+
+function game() {
+  let endScore = 0;
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = playerPrompt();
+    let computerSelection = computerPlay();
+    console.log(playerSelection);
+    console.log(computerSelection);
+    let roundScore = playRound(playerSelection, computerSelection)
+    endScore += roundScore;
+    console.log(`roundScore: ${roundScore}`);
   }
-  if (gameFull > 0) {
-    console.log("Your a winner!");
+  console.log(`Endscore is ${endScore}`)
+  if (endScore) {
+    endScore > 0 ? console.log('YOU WIN') : console.log('YOU LOSE');
   } else {
-    console.log("Computer wins this time.");
+    console.log("YOU DRAW");
   }
-  console.log("FN End: game");
 }
 
-function computerPlay(){
-  switch(Math.ceil(Math.random() * 3)){
+/**
+ * Prompt the player for input and ensure its valid
+ * @returns {string}
+ */
+function playerPrompt() {
+  let playerInput;
+  let match = false;
+  do {
+    playerInput = prompt('Select rock, scissors or paper!', 'paper').toLowerCase();
+    if (playerInput == 'rock' || playerInput == 'scissors' || playerInput == 'paper') {
+      match = true
+    }
+  } while (!match);
+  return playerInput;
+}
+
+function computerPlay() {
+  switch (Math.ceil(Math.random() * 3)) {
     case 1:
-      console.log("FN End: computerPlay rock");
       return "rock";
     case 2:
-      console.log("FN End: computerPlay paper");
       return "paper";
     case 3:
-      console.log("FN End: computerPlay scissors");
       return "scissors";
   }
-  console.log("FN End: computerPlay");
 }
 
-function playRound(player,computer){
-  console.log('FN Start: playRound');
-  switch(player){
+function playRound(player, computer) {
+  switch (player) {
     case "rock":
       if (computer == "scissors") {
-        return youWin(player,computer);
+        return YOU_WIN; // Win
       };
       if (computer == "paper") {
-        return youLose(player,computer);
+        return YOU_LOSE; // Lose
       };
       break;
     case "paper":
       if (computer == "rock") {
-        return youWin(player,computer);
+        return YOU_WIN;
       };
       if (computer == "scissors") {
-        return youLose(player,computer);
+        return YOU_LOSE;
       };
       break;
     case "scissors":
       if (computer == "paper") {
-        return youWin(player,computer);
+        return YOU_WIN;
       };
       if (computer == "rock") {
-        return youLose(player,computer);
+        return YOU_LOSE;
       };
       break;
-  }
-  //return `You draw!`;
-  console.log("FN End: playRound");
-  return 0
+    default:
+      console.log("Your selection was not valid")
+      return NaN
+  };
+  return YOU_DRAW; // Draw
 }
 
-function youWin(a,b){
-  //return `You win! ${a} beats ${b}`
-  console.log("FN End: youWin");
-  return 1
-}
-function youLose(a,b){
-  //return `You lose! ${a} beats ${b}`
-  console.log("FN End: youLose");
-  return -1
-}
